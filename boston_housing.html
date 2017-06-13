@@ -11970,7 +11970,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Minimum price of the data</span>
@@ -11995,6 +11995,12 @@ div#notebook {
 <span class="k">print</span> <span class="s2">&quot;Mean price: ${:,.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mean_price</span><span class="p">)</span>
 <span class="k">print</span> <span class="s2">&quot;Median price ${:,.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">median_price</span><span class="p">)</span>
 <span class="k">print</span> <span class="s2">&quot;Standard deviation of prices: ${:,.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">std_price</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+<span class="c1">#additions for testing</span>
+<span class="k">print</span> <span class="s2">&quot;AMin price: ${:,.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">prices</span><span class="p">))</span>
+<span class="k">print</span> <span class="s2">&quot;AMax price: ${:,.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">prices</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -12018,6 +12024,10 @@ Maximum price: $1,024,800.00
 Mean price: $454,342.94
 Median price $438,900.00
 Standard deviation of prices: $165,171.13
+
+
+AMin price: $105,000.00
+AMax price: $1,024,800.00
 </pre>
 </div>
 </div>
@@ -12178,7 +12188,7 @@ Standard deviation of prices: $165,171.13
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Answer: 0.923</p>
+<p>Answer: R^2 score of 92.3% is high and implies to have succesfully capured the variation of the target variable. The potential problem is that we have low ammount op data, what makes it hards to draw a good conclusion.</p>
 
 </div>
 </div>
@@ -13340,7 +13350,17 @@ RU5ErkJggg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Answer: The ideal max depth for the model is 3. The model will improve to some degree if more points are added.</p>
+<p>Answer:</p>
+<p>max_depth = 1 - high bias problem</p>
+<p>testing score increases only to 0.4 (low) - bad for new unseen data
+training score decreases to 0.4 (low) - bad fit for the data</p>
+<p>in this scenario having more training points would not benefit the model - does not increase with more data points. (underfit). We eed to increase instead model's complexity to fit the data better.</p>
+<p>max_depth = 10 - high variance problem</p>
+<p>testing score increases only to 0.7 - not so great
+training score decreases to 0.95  - ok</p>
+<p>In this scenario we have a case of overfitting.</p>
+<p>Ideal scenario is max_depth= 3.</p>
+<p>high training and testing score. good fit in both cases. Adding training points should somehow improve the score.</p>
 
 </div>
 </div>
@@ -13869,8 +13889,9 @@ w5KeMcaYoGFJzxhjTNCwpGeMMSZoWNIzxhgTNP4fxjmsT1nG/bMAAAAASUVORK5CYII=
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Answer: k-fold cross validation is a technique thats splits the data into k folds and uses each of the folds for test, the other for training, (every time different) for the best performance.</p>
-<p>more reliable estimate, due to tarining and testing on the whole set.</p>
+<p>more reliable estimate, due to training and testing on the whole set.</p>
 <p>the result is the average of the folds.</p>
+<p>The benefit of k-fold cross-validation with grid search is that it has lower risk to select the hyperparameters combination that performs ok on train-test split but poorly otherwise.</p>
 
 </div>
 </div>
